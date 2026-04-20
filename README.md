@@ -1,3 +1,4 @@
+````md id="umdl2v"
 # D455_record
 
 ## Description
@@ -7,6 +8,8 @@ This ROS2 package is designed for recording **RGB**, **Depth**, and **IMU** data
 Point cloud recording is not included in this package.
 
 The package subscribes to topics published by `realsense-ros` and saves sensor data for later processing such as RGB-D reconstruction, SLAM, calibration, or dataset generation.
+
+---
 
 ## Dependency
 
@@ -29,17 +32,19 @@ https://github.com/IntelRealSense/realsense-ros
 
 ## Default Topics
 
-
+```text
 /camera/camera/color/image_raw
 /camera/camera/depth/image_rect_raw
 /camera/camera/imu
 /camera/camera/color/camera_info
 /camera/camera/depth/camera_info
+````
 
 ---
 
 ## Output Structure
 
+```text
 output_dir/
 ├── rgb_video.avi
 ├── timestamps.csv
@@ -49,27 +54,37 @@ output_dir/
 │   └── imu.csv
 └── depth_raw/
     └── *.png
+```
 
 ---
 
 ## Build
 
+```bash
 cd ~/realsense_ros2
 colcon build --packages-select capture_data
 source install/setup.bash
+```
 
 ---
 
 ## Run
 
+```bash
 ros2 run capture_data realsense_data_exporter
+```
+
+Custom output directory:
+
+```bash
+ros2 run capture_data realsense_data_exporter --ros-args -p output_dir:=scene01
+```
 
 ---
+
 ## Author
 
-Fanxu 
----
+Fanxu
 
-
-
-
+```
+```
